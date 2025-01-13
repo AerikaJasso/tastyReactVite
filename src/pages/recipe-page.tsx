@@ -7,16 +7,21 @@ export default function RecipePage() {
   const [recipe, setRecipe] = useState<RecipeType>();
 
   useEffect(() => {
-    const fetchRecipe = async() => {
-      const response = await fetch(`https://dummyjson.com/recipes/${recipeId}`);
-      const data = await response.json();
-      return setRecipe(data);
+    const fn = async() => {
+      if (recipeId) {
+        const response = await fetch(`
+          https://dummyjson.com/recipes/${recipeId}`
+        );
+        const recipe = await response.json();
+  
+        if (recipe) {
+          setRecipe(recipe);
+        }
+      }
     };
-
-    if (recipeId) {
-      fetchRecipe();
-    }
-  });
+    
+    fn();
+  }, [recipeId]);
 
   if (!recipe) {
     return <h4>No Recipe Found</h4>;
