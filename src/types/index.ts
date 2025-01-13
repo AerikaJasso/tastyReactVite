@@ -1,6 +1,7 @@
 export type RecipeType = {
   id: number;
   image: string;
+  name: string;
   mealType: Array<string>;
   cuisine: string;
   difficulty: string;
