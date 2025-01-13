@@ -73,4 +73,46 @@
     body {
       @apply bg-background text-foreground;
     }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 700;
+      font-style: normal;
+    }
+  
+    p,
+    li {
+      font-family: 'Montserrat', sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+    }
+  
+    span {
+      font-family: 'Montserrat', sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+    }
+  
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 600;
+      font-style: normal;
+    }
+  
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+    }
+  }
+
+  @layer utilities {
+    .fancyGradient {
+      @apply bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-pink-200 via-violet-200 to-orange-100;
+    }
   }
