@@ -77,3 +77,8 @@ The application is deployed using GitHub Pages. To deploy your own version:
 ```bash
 pnpm run build
 ```
+
+3. Deploy to GitHub Pages
+```bash
+npm run deploy
+```
