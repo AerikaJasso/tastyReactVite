@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { RecipeType } from "@/types";
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 export default function HomePage() {
   const [data, setRecipes] = useState([]);
@@ -91,7 +92,7 @@ export default function HomePage() {
 
       <div className="grid grid-cols md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-x-10 gap-y-20 xl:gap-y-32 xl:pt-10 pt-5 pb-20">
         { recipes.map((recipe: RecipeType, idx: number) => (
-            <a href={`/recipes/${recipe.id}`}>
+            <Link to={`/tastyReactVite/recipes/${recipe.id}`}>
               <Card 
               key={`${recipe.name}-${idx}`}
               className="flex flex-col bg-orange-50 hover:scale-105 ease-in duration-200 xl:min-h-[600px] fancyGradient"
@@ -125,7 +126,7 @@ export default function HomePage() {
                   </div>
                 </CardFooter>
               </Card>
-            </a>
+            </Link>
           )
         )}
       </div>
