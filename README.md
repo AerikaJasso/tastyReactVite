@@ -1,30 +1,80 @@
-# React + TypeScript + Vite
+# Tasty React Recipe App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive React application for discovering and exploring recipes. Built with React, Vite, and TypeScript, this application provides an intuitive interface for browsing recipes and cooking inspiration.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Check out the live application at: [https://AerikaJasso.github.io/tastyReactVite/](https://AerikaJasso.github.io/tastyReactVite/)
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Browse a curated collection of recipes
+- Detailed recipe views with ingredients and instructions
+- Responsive design for mobile and desktop
+- Modern UI with smooth navigation
+- Search and filter functionality
+- Integration with DummyJSON Recipe API
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠️ Built With
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- React 18
+- TypeScript
+- Vite
+- React Router v6
+- CSS Modules
+- GitHub Pages
+- [DummyJSON](https://dummyjson.com/docs/recipes) for recipe data
+
+## 📡 API Integration
+
+This application uses the DummyJSON Recipes API to fetch recipe data. The API provides:
+
+- A collection of sample recipes
+- Recipe details including:
+  - Ingredients
+  - Instructions
+  - Cooking time
+  - Serving size
+  - Categories
+  - Tags
+
+API Endpoints used:
+- `GET /recipes` - Fetch all recipes
+- `GET /recipes/{id}` - Fetch specific recipe details
+
+For more information about the API, visit [DummyJSON Recipe Documentation](https://dummyjson.com/docs/recipes)
+
+## 🏃‍♀️ Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/AerikaJasso/tastyReactVite.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Install dependencies
+```bash
+cd tastyReactVite
+npm install
+```
+
+3. Start the development server
+```bash
+npm run dev
+```
+
+## 🚀 Deployment
+
+The application is deployed using GitHub Pages. To deploy your own version:
+
+1. Update the `homepage` in `package.json`
+2. Run the build command
+```bash
+npm run build
+```
