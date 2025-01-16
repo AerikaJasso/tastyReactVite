@@ -73,9 +73,7 @@ export default function RecipePage() {
         <div className="py-4 mx-auto">
           <img
             src={recipe.image}
-            width="400"
-            height="400"
-            className="w-96 h-96 lg:h-[600px] lg:w-[600px]"
+            className="h-auto max-w-full"
           />
         </div>
       </div>
