@@ -18,7 +18,7 @@ export default function HomePage() {
   const defaultBadges:Array<string> = [
     "Chinese", "Japanese", "Korean", "Thai", "Vietnamese",
     "Indian", "Malaysian", "Indonesian", "Filipino", "Mexican", "Italian"
-  ] 
+  ]; 
 
   const recipes = filteredRecipes.length > 0 ? filteredRecipes : data;
   const displayBadges = badges.length > 0 ? badges : defaultBadges;
