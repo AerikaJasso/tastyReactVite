@@ -92,7 +92,7 @@ export default function HomePage() {
 
       <div className="grid grid-cols- md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-x-10 gap-y-20 xl:gap-y-32 xl:pt-32 pt-12 pb-20">
         {recipes.map((recipe: RecipeType, idx: number) => (
-          <Link to={`/tastyReactVite/recipes/${recipe.id}`}>
+          <Link to={`/recipes/${recipe.id}`}>
             <Card
               key={`${recipe.name}-${idx}`}
               className="flex flex-col bg-orange-50 hover:scale-105 ease-in duration-200 xl:min-h-[600px] fancyGradient h-full"
