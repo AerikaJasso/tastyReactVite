@@ -60,7 +60,7 @@ git clone https://github.com/AerikaJasso/tastyReactVite.git
 2. Install dependencies
 ```bash
 cd tastyReactVite
-pnpm installp
+pnpm install
 ```
 
 3. Start the development server
