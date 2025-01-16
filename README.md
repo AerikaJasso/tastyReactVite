@@ -80,5 +80,5 @@ pnpm run build
 
 3. Deploy to GitHub Pages
 ```bash
-npm run deploy
+pnpm run deploy
 ```
