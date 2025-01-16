@@ -21,7 +21,6 @@ Check out the live application at: [https://AerikaJasso.github.io/tastyReactVite
 - TypeScript
 - Vite
 - React Router v6
-- CSS Modules
 - GitHub Pages
 - [DummyJSON](https://dummyjson.com/docs/recipes) for recipe data
 
