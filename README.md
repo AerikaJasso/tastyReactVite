@@ -48,7 +48,7 @@ For more information about the API, visit [DummyJSON Recipe Documentation](https
 ### Prerequisites
 
 - Node.js (v14 or higher)
-- npm or yarn
+- pnpm
 
 ### Installation
 
@@ -60,12 +60,12 @@ git clone https://github.com/AerikaJasso/tastyReactVite.git
 2. Install dependencies
 ```bash
 cd tastyReactVite
-npm install
+pnpm installp
 ```
 
 3. Start the development server
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ## 🚀 Deployment
@@ -75,5 +75,5 @@ The application is deployed using GitHub Pages. To deploy your own version:
 1. Update the `homepage` in `package.json`
 2. Run the build command
 ```bash
-npm run build
+pnpm run build
 ```
