@@ -4,6 +4,7 @@ export type RecipeType = {
   name: string;
   mealType: Array<string>;
   cuisine: string;
+  tags: Array<string>;
   difficulty: string;
   ingredients: Array<string>;
   instructions: Array<string>;

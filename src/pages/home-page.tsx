@@ -10,15 +10,29 @@ import { RecipeType } from "@/types";
 import { useEffect, useState } from "react";
 
 export default function HomePage() {
-  const [recipes, setRecipes] = useState([]);
-  const [filterRecipes, setFilterRecipes] = useState([]);
+  const [data, setRecipes] = useState([]);
+  const [filteredRecipes, setfilteredRecipes] = useState([]);
   const [badge, setBadge] = useState("");
+  const [badges, setBadges] = useState([]);
+  const defaultBadges:Array<string> = [
+    "Chinese", "Japanese", "Korean", "Thai", "Vietnamese",
+    "Indian", "Malaysian", "Indonesian", "Filipino", "Mexican", "Italian"
+  ] 
+
+  const recipes = filteredRecipes.length > 0 ? filteredRecipes : data;
+  const displayBadges = badges.length > 0 ? badges : defaultBadges;
 
   const getAllRecipes = async () => {
     const response = await fetch('https://dummyjson.com/recipes');
-    const data = await response.json();
-    return data.recipes;
+    const { recipes } = await response.json();
+    return recipes;
   };
+
+  const getAllBadges = async () => {
+    const response = await fetch('https://dummyjson.com/recipes/tags');
+    const badges = await response.json();
+    return badges;
+  }
 
   useEffect(() => {
     const getRecipes =  async () => {
@@ -27,23 +41,17 @@ export default function HomePage() {
         setRecipes(recipes);
       }
     };
-
-    getRecipes();
-  }, []);
-
-  useEffect(() => {
-    const getFilteredRecipes = async () => {
-      const recipes = await getAllRecipes();
-      const filteredRecipesByCuisine = recipes.filter(
-        (recipe: RecipeType) => recipe.cuisine === badge
-      );
-      setFilterRecipes(filteredRecipesByCuisine); 
+    
+    const getBadges = async () => {
+      const badges = await getAllBadges();
+      if (badges) {
+        setBadges(badges);
+      }
     };
-
-    if (badge) {
-      getFilteredRecipes();
-    }
-  }, [badge]);
+  
+    getRecipes();
+    getBadges();
+  }, []);
 
   const handleOnClick = (
     e: React.MouseEvent<HTMLDivElement,
@@ -54,15 +62,19 @@ export default function HomePage() {
     setBadge(cuisine);
   };
 
-  const cuisines:Array<string> = [
-    "Chinese", "Japanese", "Korean", "Thai", "Vietnamese",
-    "Indian", "Malaysian", "Indonesian", "Filipino", "Sri Lankan"
-  ];
+  useEffect(() => {
+    if (badge) {
+      const filteredRecipesByCuisine = data.filter(
+        (recipe: RecipeType) =>  recipe && recipe.tags.includes(badge)
+      );
+      setfilteredRecipes(filteredRecipesByCuisine);
+    }
+  }, [badge, data]);
 
   return (
     <div className="xl:px-24 px-10">
       <div className="my-12">
-        {cuisines.map((cuisine, idx) => (
+        {displayBadges.map((cuisine, idx) => (
           <Badge 
             key={`${cuisine}-${idx}`}
             variant={"outline"}
@@ -78,8 +90,7 @@ export default function HomePage() {
       </div>
 
       <div className="grid grid-cols md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-x-10 gap-y-20 xl:gap-y-32 xl:pt-10 pt-5 pb-20">
-        { (filterRecipes.length > 0 ? filterRecipes 
-          : recipes).map((recipe: RecipeType, idx: number) => (
+        { recipes.map((recipe: RecipeType, idx: number) => (
             <a href={`/recipes/${recipe.id}`}>
               <Card 
               key={`${recipe.name}-${idx}`}
