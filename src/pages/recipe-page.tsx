@@ -37,7 +37,7 @@ export default function RecipePage() {
           <h1 className="text-4xl lg:text-6xl my-8 uppercase">
             {recipe.name}
           </h1>
-          <div className="grid grid-cols-3 gap-12">
+          <div className="grid grid-cols-3 gap-2">
             <div className="flex flex-col">
               <p className="text-xl lg:text-3xl uppercase">🍽️ Serves</p>
               <p className="text-gray-800 text-2xl lg:text-3xl font-bold">
