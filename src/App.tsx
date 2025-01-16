@@ -6,7 +6,7 @@ import NavBar from './components/ui/nav-bar';
 
 function App() {
   return (
-    <div>
+    <div className="grid grid-rows-[auto,1fr] h-screen">
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />}/>

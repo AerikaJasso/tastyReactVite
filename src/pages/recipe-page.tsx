@@ -1,30 +1,45 @@
-import { RecipeType } from "@/types";
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { RecipeType } from '@/types';
+import { Link, useParams } from 'react-router';
+import { useFetch } from '@/hooks/useFetch';
+import { Loader } from 'lucide-react';
+import RecipeMessage from '@/components/RecipeMessage';
 
 export default function RecipePage() {
   const { recipeId } = useParams();
-  const [recipe, setRecipe] = useState<RecipeType>();
+  const {
+    data: recipe,
+    status,
+    isLoading,
+    error
+  } = useFetch<RecipeType>(`https://dummyjson.com/recipes/${recipeId}`);
 
-  useEffect(() => {
-    const fn = async() => {
-      if (recipeId) {
-        const response = await fetch(`
-          https://dummyjson.com/recipes/${recipeId}`
-        );
-        const recipe = await response.json();
-  
-        if (recipe) {
-          setRecipe(recipe);
-        }
-      }
-    };
-    
-    fn();
-  }, [recipeId]);
+  if (isLoading) {
+    return (
+      <RecipeMessage>
+        <div className="animate-spin duration-2000">
+          <Loader size={100} />
+        </div>
+      </RecipeMessage>
+    );
+  }
+
+  if (error && status !== 404) {
+    return (
+      <RecipeMessage>
+        <h1 className="text-3xl">Something went wrong!</h1>
+        <p>{error.toString()}</p>
+        <p>Status: {status}</p>
+      </RecipeMessage>
+    );
+  }
 
   if (!recipe) {
-    return <h4>No Recipe Found</h4>;
+    return (
+      <RecipeMessage>
+        <h1 className="text-3xl">No Recipe Found</h1>
+        <p>{status}</p>
+      </RecipeMessage>
+    );
   }
 
   return (
@@ -73,9 +88,7 @@ export default function RecipePage() {
         <div className="py-4 mx-auto">
           <img
             src={recipe.image}
-            width="400"
-            height="400"
-            className="w-96 h-96 lg:h-[600px] lg:w-[600px]"
+            className="h-auto max-w-full"
           />
         </div>
       </div>
